@@ -1,0 +1,80 @@
+.v-toast__item {
+  cursor: default !important;
+}
+//Error toast
+.v-toast__item--error {
+  background-color: #FEF2F2 !important;
+  color: #991B1B !important;
+
+  .v-toast__icon {
+    background: url('assets/sass/plugins/vue-toast/img/error.svg') !important;
+  }
+}
+
+//Success toast
+.v-toast__item--success {
+  background-color: #ECFDF5 !important;
+  color: #065F46 !important;
+
+  .v-toast__icon {
+    background: url('assets/sass/plugins/vue-toast/img/success.svg') !important;
+  }
+}
+
+.v-toast__item--success::after {
+  content: url('assets/sass/plugins/vue-toast/img/cross-default.svg') !important;
+  width: 50px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.v-toast__item--success:hover:after{
+  cursor: pointer !important;
+}
+
+
+
+// Default toast
+.v-toast__item--default {
+  background-color: #F3F4F6 !important;
+  color: #1F2937 !important;
+
+
+  .v-toast__icon {
+    background: url('assets/sass/plugins/vue-toast/img/secondary.svg') no-repeat !important;
+  }
+}
+
+.v-toast__item--default::after {
+  content: url('assets/sass/plugins/vue-toast/img/cross-default.svg') !important;
+  width: 50px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.v-toast__item--default:hover:after{
+  cursor: pointer !important;
+}
+
+
+// Info toast
+.v-toast__item--info {
+  background-color: #EFF6FF !important;
+  color: #1E40AF !important;
+
+
+  .v-toast__icon {
+    background: url('assets/sass/plugins/vue-toast/img/info.svg') no-repeat !important;
+  }
+}
+
+.v-toast__item--info::after {
+  content: url('assets/sass/plugins/vue-toast/img/cross-info.svg') !important;
+  width: 50px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.v-toast__item--info:hover:after{
+  cursor: pointer !important;
+}
