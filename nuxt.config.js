@@ -15,6 +15,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  router: {
+    middleware: [ 'auth','redirect','patient' ]
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -23,7 +26,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/plugins/vue-toast-notification.js', ssr: true}
+    {src: '~/plugins/toast.js', ssr: true } ,
+    {src: '~/plugins/axios.js', ssr: true }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -32,24 +36,75 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
+    '@nuxt/typescript-build',
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    '@nuxtjs/tailwindcss'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/dotenv',
+    'vue-sweetalert2/nuxt'
   ],
 
+  auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: 'laravel/sanctum',
+        token: {
+          name: 'Authorization',
+          required: true,
+          type: 'Bearer'
+        },
+        url: process.env.AUTH_BASE_URL,
+        endpoints: {
+          login: {
+            url: process.env.AUTH_PATH_URL
+          },
+          logout: {
+            url: '/api/logout'
+          },
+          users: {
+            url: '/api/users'
+          }
+        },
+        user: {
+          property : false
+        }
+      }
+    },
+    redirect: {
+      logout: '/login',
+      home: '/home'
+
+    },
+    plugins: [
+      '~/plugins/auth.js'
+    ]
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: process.env.API_URL,
+    credentials: true,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  layoutTransition: 'fade',
+  pageTransition: 'fade',
+
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   }
 }

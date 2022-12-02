@@ -1,20 +1,24 @@
 <template>
-  <table class="table-auto w-3/4 border rounded-lg">
+  <table class="w-inherit border rounded-lg">
     <thead>
-      <tr class="bg-gray-50 h-12 text-gray-500  mx-2 text-xs leading-4 font-medium uppercase tracking-wider">
-        <slot name="headers"/>
+      <tr class="bg-gray-50 h-12 text-gray-500 mx-2 text-xs leading-4 font-medium uppercase tracking-wider">
+        <slot name="headers" />
       </tr>
     </thead>
     <tbody>
-      <slot name="body"/>
+      <slot name="body" />
     </tbody>
   </table>
 </template>
 
 <script>
-export default {
-  name: 'TableBase'
-}
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'TableBase',
+  layout: 'default'
+})
+
 </script>
 
 <style scoped>
@@ -31,10 +35,10 @@ tbody tr:nth-child(even) {
 tbody tr td {
   padding-left: 2rem;
   padding-right: 2rem;
+  text-align: center;
 }
 
 table {
-  margin-left: 120px;
   border-spacing: 0;
   border-collapse: separate;
 }

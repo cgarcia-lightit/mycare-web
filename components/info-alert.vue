@@ -1,15 +1,14 @@
 <template>
-  <div/>
+  <div>
+    <img src="static/icons">
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'Index',
-  middleware ({ redirect }) {
-    redirect('/home')
-  }
+  name: 'info-alert'
 })
 </script>
 

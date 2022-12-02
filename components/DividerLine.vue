@@ -1,15 +1,12 @@
 <template>
-  <div/>
+  <div class="my-5 border-b border-gray-200 text-center" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'Index',
-  middleware ({ redirect }) {
-    redirect('/home')
-  }
+  name: 'DividerLine'
 })
 </script>
 

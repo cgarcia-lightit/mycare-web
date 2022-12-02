@@ -16,6 +16,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    //'no-use-before-define': 0,
     'comma-dangle': ['error', 'never']
     // 'vue/multi-word-component-names': 0
   }
